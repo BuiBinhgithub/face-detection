@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Button } from "@mantine/core";
 import { useFaceDetection } from "./hooks/useFaceDetection";
-import CustomModal from "./components/customModal";
+import CustomModal from "./components/customModal/customModal";
 
 function App() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -39,6 +39,7 @@ function App() {
         gap: "1rem",
       }}
     >
+      <span className=""> 🔍 Nhận diện khuôn mặt theo từng bước</span>
       <Button onClick={openModal}>📷 Bắt đầu quét khuôn mặt</Button>
 
       {capturedImage && (
@@ -52,11 +53,7 @@ function App() {
         </div>
       )}
 
-      <CustomModal
-        opened={modalOpened}
-        onClose={closeModal}
-        title="🔍 Nhận diện khuôn mặt theo từng bước"
-      >
+      <CustomModal opened={modalOpened} onClose={closeModal}>
         <div
           style={{
             alignItems: "center",
