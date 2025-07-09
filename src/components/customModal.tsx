@@ -7,24 +7,6 @@ type CustomModalProps = {
   children: ReactNode;
 };
 
-export const CustomModal: React.FC<CustomModalProps> = ({
-  opened,
-  onClose,
-  title,
-  children,
-}) => {
-  if (!opened) return null;
-
-  return (
-    <div style={styles.overlay} onClick={onClose}>
-      <div style={styles.modal} onClick={(e) => e.stopPropagation()}>
-        {title && <h2 style={styles.title}>{title}</h2>}
-        <div>{children}</div>
-      </div>
-    </div>
-  );
-};
-
 const styles: Record<string, React.CSSProperties> = {
   overlay: {
     position: "fixed",
@@ -50,6 +32,24 @@ const styles: Record<string, React.CSSProperties> = {
     margin: "0 0 1rem 0",
     fontSize: "1.2rem",
   },
+};
+
+export const CustomModal: React.FC<CustomModalProps> = ({
+  opened,
+  onClose,
+  title,
+  children,
+}) => {
+  if (!opened) return null;
+
+  return (
+    <div style={styles.overlay} onClick={onClose}>
+      <div style={styles.modal} onClick={(e) => e.stopPropagation()}>
+        {title && <h2 style={styles.title}>{title}</h2>}
+        <div>{children}</div>
+      </div>
+    </div>
+  );
 };
 
 export default CustomModal;
